@@ -32,7 +32,7 @@ LP_DIR=`cd $(dirname $0); cd ..; pwd`
 BUILDPACK_DIR="$(dirname $(dirname $0))"
 
 
-echo $BUILD_DIR 
+echo "BUILD_DIR: " $BUILD_DIR 
 echo "CACHE_DIR: " $CACHE_DIR
 echo "LP_DIR: " $LP_DIR
 echo "BUILDPACK_DIR: "  $BUILDPACK_DIR
@@ -47,7 +47,7 @@ VENDOR_DIR="$BUILD_DIR/vendor"
 R_BASE="$VENDOR_DIR/R"
 CRAN_MIRROR="http://cran.revolutionanalytics.com"
 
-
+echo "VENDOR_DIR: " $VEDOR_DIR
 echo "R_BASE: " $R_BASE
 mkdir -p $CACHE_DIR
 
@@ -71,10 +71,13 @@ cp -R $VENDOR_DIR/gsl/* /app/vendor/gsl
 mkdir -p /app/vendor/R
 cp -R $VENDOR_DIR/R/* /app/vendor/R
 
+echo "ls /app/vendor dir: " `ls -l /app/vendor`
 # HACK: need to copy over the gcc libs so that packages can find them
 mkdir -p /app/vendor/R/lib64/R/lib
 cp /app/vendor/gcc/lib64/* /app/vendor/R/lib64/R/lib
 
+echo "ls /app/vendor dir: " `ls -l /app/vendor`
+echo "ls /tmp/staged/app/vendor dir: " `ls -l /tmp/staged/app/vendor`
 # R needs to know where gfortran and glibc header files are
 export PATH="/app/vendor/R/bin:/app/vendor/gcc/bin:$PATH"
 
