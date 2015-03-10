@@ -31,6 +31,11 @@ CACHE_DIR="$2/vendor"
 LP_DIR=`cd $(dirname $0); cd ..; pwd`
 BUILDPACK_DIR="$(dirname $(dirname $0))"
 
+
+echo $BUILD_DIR 
+echo "CACHE_DIR: " $CACHE_DIR
+echo "LP_DIR: " $LP_DIR
+echo "BUILDPACK_DIR: "  $BUILDPACK_DIR
 # config
 R_VERSION="3.1.2"
 BUILD_PACK_VERSION="20150301-1046"
@@ -42,6 +47,8 @@ VENDOR_DIR="$BUILD_DIR/vendor"
 R_BASE="$VENDOR_DIR/R"
 CRAN_MIRROR="http://cran.revolutionanalytics.com"
 
+
+echo "R_BASE: " $R_BASE
 mkdir -p $CACHE_DIR
 
 # vendor R into the slug
